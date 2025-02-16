@@ -1,0 +1,20 @@
+h1{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(52, 137, 235);
+
+}
+
+#search-form{
+    display: flex;
+    flex-direction: row;
+    border: 2px solid black ;
+    
+
+    
+
+}
+body{
+    background-image: url(C:\Users\HP\Desktop\Javascript\car.jpg);
+    background-size: cover;
+}
