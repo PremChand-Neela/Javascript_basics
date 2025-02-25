@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #fff;
+        }
+
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        img {
+            width: 120px;
+            height: auto;
+            display: block;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        input[type="text"], input[type="button"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        input[type="button"] {
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        input[type="button"]:hover {
+            background: #0056b3;
+        }
+
+        #orderSummary {
+            display: none;
+            background: #e9ecef;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #343a40;
+        }
+
+        dt {
+            font-weight: bold;
+        }
+
+        dd {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function placeorder() {
+            document.getElementById("orderSummary").style.display = "block";
+            document.getElementById("orderForm").style.display = "none";
+
+            let Uname = document.getElementById("txtname").value;
+            let mobile = document.getElementById("txtmobile").value;
+            let burger = document.getElementById("optBurger");
+            let roller = document.getElementById("optRoller");
+            let fries = document.getElementById("optfries");
+
+            let mcost = 0;
+            let acost = 0;
+            let mname = "None";
+            let aname = "None";
+
+            if (burger.checked) {
+                mcost = 120;
+                mname = burger.value;
+            }
+            if (roller.checked) {
+                mcost = 100;
+                mname = roller.value;
+            }
+            if (fries.checked) {
+                acost = 60;
+                mcost += acost;
+                aname = fries.value;
+            }
+
+            document.getElementById("lblname").innerText = Uname;
+            document.getElementById("lblmobile").innerText = mobile;
+            document.getElementById("lblmeal").innerText = mname;
+            document.getElementById("lbladd").innerText = aname;
+            document.getElementById("lblAmount").innerText = "₹" + mcost;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Food Order Form</h1>
+        <table border="1" id="orderForm">
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <img src="food.jpeg" alt="Food">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><strong>Customer Details</strong></td>
+            </tr>
+            <tr>
+                <td>Customer Name</td>
+                <td><input type="text" id="txtname"></td>
+            </tr>
+            <tr>
+                <td>Mobile</td>
+                <td><input type="text" id="txtmobile"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><strong>Select a Meal</strong></td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="burger.jpeg" alt="Burger">
+                    <br>
+                    <input type="radio" name="meal" id="optBurger" value="OMG Burger"> Burger (₹120)
+                </td>
+                <td>
+                    <img src="roller.jpeg" alt="Roller">
+                    <br>
+                    <input type="radio" name="meal" id="optRoller" value="OMG Roller"> Roller (₹100)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><strong>Select Add-ons</strong></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <img src="fries.jpg" alt="Fries">
+                    <br>
+                    <input type="checkbox" id="optfries" value="Large Fries"> Large Fries (₹60)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="Place Order" onclick="placeorder()">
+                </td>
+            </tr>
+        </table>
+
+        <div id="orderSummary">
+            <h2>Order Summary</h2>
+            <dl>
+                <dt>Customer Name:</dt>
+                <dd id="lblname"></dd>
+                <dt>Mobile:</dt>
+                <dd id="lblmobile"></dd>
+                <dt>Meal:</dt>
+                <dd id="lblmeal"></dd>
+                <dt>Add-ons:</dt>
+                <dd id="lbladd"></dd>
+                <dt>Total Bill:</dt>
+                <dd id="lblAmount"></dd>
+            </dl>
+            <br>
+            <input type="button" value="Print Bill" ondblclick="window.print()">
+        </div>
+    </div>
+</body>
+</html>
