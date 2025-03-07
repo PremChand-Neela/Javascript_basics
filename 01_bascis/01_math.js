@@ -38,3 +38,24 @@ const min = 10
 const max = 20
 
 //console.log(Math.floor(Math.random() * (max - min + 1)) + min)
+
+function abc(){
+    console.log(abc.xyz);
+    
+}
+
+abc();
+abc.xyz=100;
+abc.xyz=200;
+abc();
+
+let arr = [...'prem']
+
+console.log(arr);
+console.log(parseFloat('10+2'));
+console.log(parseInt('F7M'));
+console.log([1,2].map(num=>{
+    if (num>0) return;
+    return n*2;
+}));
+// 

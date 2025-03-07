@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Venkateshvara Agencies</h1>
+    <button id="start">Start</button>
+    <button id="stop">stop</button>
+</body>
+<script>
+let saydate=function(str){
+    console.log(str,Date.now());
+    
+}
+;
+
+let repeate ;
+document.querySelector('#start').addEventListener("click",function(){
+    if (!repeate) { // Prevent multiple intervals
+        repeate = setInterval(saydate, 1000, "hi");
+    }
+})
+document.querySelector("#stop").addEventListener('click',function(){
+    clearInterval(repeate);
+    repeate = null;
+})
+
+let clear = clearInterval(repeate)
+</script>
+</html>
